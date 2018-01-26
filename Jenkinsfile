@@ -5,7 +5,7 @@ node {
 
     stage " 1 | Build w/ Docker plugin"
         id = readFile('commit-id')replace("\n", "").replace("\r", "")
-        docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+        docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
             def img = docker.build("sidartaoliveira/demo:${id}")
             img.push()
         }
